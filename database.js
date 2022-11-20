@@ -1,5 +1,5 @@
 const CyclicDb = require("cyclic-dynamodb")
-const db = CyclicDb("bored-sunglasses-lionCyclicDB")
+const db = CyclicDb("sore-gold-betta-tutuCyclicDB")
 
 const animals = db.collection("animals")
 
