@@ -15,4 +15,4 @@ const run = async function(){
   console.log(item)
 }
 
-run()
+module.exports = { run }

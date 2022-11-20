@@ -1,11 +1,13 @@
 const express = require('express')
 const app = express()
 const db = require('cyclic-dynamodb')
+const { run } = require('./database')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.get('/test', (req, res) => {
+  run()
   res.json({ text: 'hello world from afu' })
 })
 
