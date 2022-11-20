@@ -1,27 +1,33 @@
 const express = require('express')
-const mongoose = require('mongoose')
+const CyclicDB = require('cyclic-dynamodb')
+const db = CyclicDB('sore-gold-betta-tutuCyclicDB')
+
+const animals = db.collection("animals")
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGO_URI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.log(error);
-    process.exit(1);
-  }
-}
-
-//Routes go here
-app.get('/', (req,res) => {
-  res.json({"every thing":"is awesome"})
+app.get('/', (req, res) => {
+  res.send('test')
 })
 
-//Connect to the database before listening
-connectDB().then(() => {
-    app.listen(PORT, () => {
-      console.log("!!! listening for requests");
+app.get('/create', async (req, res) => {
+  try {
+    let leo = await animals.set("leo", {
+      type: "cat",
+      color: "orange"
     })
+    res.json({ leo })
+  } catch (e) {
+    res.json({ e })
+  }
+})
+
+app.get('/all', async (req, res) => {
+  let item = await animals.get("leo")
+  res.json({ item })
+})
+
+app.listen(PORT, () => {
+  console.log('running on port:', PORT)
 })
