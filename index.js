@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
-const db = require('cyclic-dynamodb')
+const CyclicDb = require("cyclic-dynamodb")
+const db = CyclicDb("sore-gold-betta-tutuCyclicDB")
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
