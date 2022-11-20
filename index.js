@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const db = require('cyclic-dynamodb')
-const { default: animals } = require('./database')
+const { animals } = require('./database')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

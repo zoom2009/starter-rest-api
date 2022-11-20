@@ -3,4 +3,4 @@ const db = CyclicDb("sore-gold-betta-tutuCyclicDB")
 
 const animals = db.collection("animals")
 
-export default animals
+module.exports = { animals }
