@@ -1,5 +1,5 @@
 const CyclicDB = require('cyclic-dynamodb')
-const db = CyclicDB("sore-gold-betta-tutuCyclicDB")
+const db = new CyclicDB("sore-gold-betta-tutuCyclicDB")
 
 const run = async function(){
   let animals = db.collection('animals')
