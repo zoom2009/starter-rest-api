@@ -1,6 +1,18 @@
-const CyclicDb = require("cyclic-dynamodb")
+const CyclicDB = require('cyclic-dynamodb')
 const db = CyclicDb("sore-gold-betta-tutuCyclicDB")
 
-const animals = db.collection("animals")
+const run = async function(){
+  let animals = db.collection('animals')
 
-module.exports = { animals }
+  // create an item in collection with key "leo"
+  let leo = await animals.set('leo', {
+      type:'cat',
+      color:'orange'
+  })
+
+  // get an item at key "leo" from collection animals
+  let item = await animals.get('leo')
+  console.log(item)
+}
+
+run()
