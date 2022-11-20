@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }))
 // #############################################################################
 
 // Create or Update an item
-app.get('create/:col/:key', async (req, res) => {
+app.get('/create/:col/:key', async (req, res) => {
   console.log(req.body)
 
   const col = req.params.col
